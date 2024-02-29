@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<style>
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 0.5%;
+    }
+</style>
+
+<body>
+    <table class = "table" id = "table1" width="80%">
+        <tr>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Course</th>
+        </tr>
+        <tr>
+            <td>Emil</td>
+            <td>Tobias</td>
+            <td>Linus</td>
+        </tr>
+        <tr>
+            <td>6231344</td>
+            <td>1236434</td>
+            <td>3674774</td>
+        </tr>
+    </table>
+    <br>
+    <h3>Add New</h3><br>
+
+    <label>Student Name</label><br><input id = "inputName"></input><br>
+    <label>Student ID</label><br><input type = number id = "inputId"></input><br>
+    <label>Student Course</label><br><input id = "inputCourse"></input><br>
+    <input type = submit id="submitButton"></button>
+</body>
+
+<script>
+
+    let nameInput = document.getElementById("inputName").value
+    let idInput = document.getElementById("inputId").value
+    let courseInput = document.getElementById("inputCourse").value
+
+    function addRow() {
+        
+        let submitButton = document.getElementById("submitButton")
+        submitButton.addEventListener("click", submitEntered);
+    }
+
+    function submitEntered() {
+        let table = document.getElementById("table1");
+        let row = table.insertRow(-1);
+
+        let c1 = row.insertCell(0);
+        let c2 = row.insertCell(1);
+        let c3 = row.insertCell(2);
+
+        c1.innerText = nameInput
+        c2.innerText = idInput
+        c3.innerText = courseInput
+    }
+    
+</script>

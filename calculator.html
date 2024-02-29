@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Calculator</title>
+</head>
+
+<style>
+button {
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.output {
+    border: 1px solid black;
+    padding: 10px 10px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+</style>
+
+<div></div>
+<p class="output" id="output"> </p>
+<div id="buttonsContainer"></div>
+
+<script>
+
+const buttons = [
+    "7", "8", "9", "/",
+    "4", "5", "6", "*",
+    "1", "2", "3", "-",
+    "0", ".", "=", "+",
+    "C"
+];
+
+function createButtons() {
+    buttons.forEach(function(label, index) {
+        const elem = document.createElement("button");
+        elem.textContent = label;
+        elem.value = label;
+        elem.addEventListener("click", buttonClick);
+        buttonsContainer.appendChild(elem);
+        if ((index + 1) % 4 === 0) {
+            buttonsContainer.appendChild(document.createElement("br"));
+        }
+    });
+}
+
+function buttonClick(event) {
+    const clickedButtonValue = event.target.value;
+
+    if (clickedButtonValue === "=") {
+        if (output.textContent !== "") {
+            output.textContent = eval(output.textContent);
+        }
+    } else if (clickedButtonValue === "C") {
+        output.textContent = "";
+    } else {
+        output.textContent += clickedButtonValue;
+    }
+}
+
+createButtons()
+
+</script>

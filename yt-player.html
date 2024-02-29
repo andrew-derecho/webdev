@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+<title>Video Player</title>
+</head>
+<body>
+<input type="text" id="videoID" placeholder="Enter YouTube video ID ONLY (NOT URL) here" size="50" />
+<br><br>
+<button onclick="loadVideo()">Load Video</button>
+<br><br>
+<iframe id="videoPlayer" width="640" height="360" controls>
+    <source src="">
+    Your browser does not support the video tag.
+</iframe>
+
+<script>
+function loadVideo() {
+    var videoID = document.getElementById('videoID').value;
+
+    var videoPlayer = document.getElementById('videoPlayer');
+
+    let prefix = "https://www.youtube.com/embed/"
+    let result = prefix.concat(videoID);
+    videoPlayer.src = result;
+}
+</script>
+
+</body>
+</html>
